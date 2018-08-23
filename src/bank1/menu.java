@@ -38,7 +38,11 @@ class menu {
 					}
 				} else if (userChoose.equals("3")) {
 
-					System.out.println("取钱");
+					if (userFlag == 1)
+						us.draw();
+					else {
+						throw new AllException("账号不存在,请开户");
+					}
 				} else if (userChoose.equals("4")) {
 
 					System.out.println("欢迎下次光临,再见");

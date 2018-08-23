@@ -107,7 +107,8 @@ class user {
 		}
 	}
 
-	public void drwa() throws AllException, StopException {
+	// 取钱
+	public void draw() throws AllException, StopException {
 
 		int errCnt = 0;
 
