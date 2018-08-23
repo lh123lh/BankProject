@@ -123,16 +123,18 @@ class user {
 		System.out.println("请输入您要取出的金额:");
 		int money = input.nextInt();
 
-		boolean flag = bs.drawMoney(count, pass, money);
+		int flag = bs.drawMoney(count, pass, money);
 
 		while (true) {
 
 			try {
 
-				if (flag == true) {
+				if (flag == 0) {
 					break;
-				} else {
+				} else if (flag == -1) {
+					throw new AllException("");
 
+				} else if (flag == -2) {
 					errCnt++;
 
 					if (errCnt >= 3) {

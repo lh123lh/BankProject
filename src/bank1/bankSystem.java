@@ -22,7 +22,7 @@ class bankSystem {
 		if (userMoney >= 10) {
 			userMoney -= 10;
 
-			System.out.println(userName + " 您好,您已开户成功,当前余额为" + userMoney + "RMB");
+			System.out.println(userName + " 您好,您已开户成功,当前余额为" + userMoney + " RMB");
 
 			return true;
 		} else {
@@ -38,7 +38,7 @@ class bankSystem {
 		if (count.equals(userCount) && pass.equals(userPass)) {
 			userMoney += money;
 
-			System.out.println("您的钱已存入银行账户,当前余额为:" + userMoney + "RMB");
+			System.out.println("您的钱已存入银行账户,当前余额为:" + userMoney + " RMB");
 
 			return true;
 		} else {
@@ -50,17 +50,23 @@ class bankSystem {
 	}
 
 	// 取钱
-	public boolean drawMoney(String count, String pass, int money) {
+	public int drawMoney(String count, String pass, int money) {
 		if (count.equals(userCount) && pass.equals(userPass)) {
-			userMoney -= money;
+			if (money <= userMoney) {
+				userMoney -= money;
 
-			System.out.println("您已取出" + money + "RMB,当前余额为:" + userMoney + "RMB");
+				System.out.println("您已取出" + money + " RMB,当前余额为:" + userMoney + "RMB");
 
-			return true;
+				return 0;
+			} else {
+				System.out.println("您当前的余额为" + userMoney + " RMB, 不足" + money + "RMB, 请重新输入取款金额");
+
+				return -1;
+			}
 		} else {
 			System.out.println("您输入的账号密码有误,请重试");
 
-			return false;
+			return -2;
 		}
 	}
 }
